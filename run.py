@@ -3,23 +3,21 @@ A startup location to execute all problems
 """
 
 from shared import stopwatch
-from problems.day01 import part1
-from problems.day01 import part2
+from problems import day01, day02
+
+def test(f, message):
+    timer = stopwatch.Timer()
+    timer.start()
+    ret = f()
+    timer.stop()
+    print(message)
+    if ret:        
+        print('  Solution: {}'.format(ret))
+    print('  Elapsed: {}'.format(timer.elapsed()))
+    print()
 
 print('Advent of Code - https://adventofcode.com/2018')
-
-timer = stopwatch.Timer()
-timer.start()
-
-ret1 = part1.main()
-ret2 = part2.main()
-
-timer.stop()
-
-if ret1:
-    print('  Solution Part 1: {}'.format(ret1))
-
-if ret2:
-	print('  Solution Part 2: {}'.format(ret2))
-
-print('  Elapsed: {}'.format(timer.elapsed()))
+print('----------------------------------------------')
+print()
+# test(day01.main, "Day 01")
+test(day02.main, "Day 02")
