@@ -3,7 +3,7 @@ A startup location to execute all problems
 """
 
 from shared import stopwatch
-from problems import day01, day02, day03, day04
+from problems import day01, day02, day03, day04, day05
 
 def test(f, message):
     timer = stopwatch.Timer()
@@ -22,4 +22,5 @@ print()
 # test(day01.main, "Day 01")
 # test(day02.main, "Day 02")
 # test(day03.main, "Day 03")
-test(day04.main, "Day 04")
+# test(day04.main, "Day 04")
+test(day05.main, "Day 05")
