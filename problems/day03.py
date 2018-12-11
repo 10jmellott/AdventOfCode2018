@@ -46,6 +46,7 @@ def _part1():
     claims = map(lambda line: Claim(line), f)
     # Specify the maximum fabric dimensions
     N = 1000
+    overlapping = 0
     # Initialize an array for the fabric
     fabric = [0] * (N * N)
     # For each claim
@@ -54,12 +55,10 @@ def _part1():
         for i in range(claim.x, claim.x2):
             for j in range(claim.y, claim.y2):
                 fabric[i * N + j] += 1
-    # Sum the squares with more than 1 claim
-    overlapping = 0
-    for j in range(N):
-        for i in range(N):
-            if fabric[i * N + j] > 1:
-                overlapping += 1
+                # The first time a fabric is counted twice, we add one to overlapping
+                #  This avoids double-counting spaces that overlap 3+ times
+                if fabric[i * N + j] == 2:
+                    overlapping += 1
     return overlapping
 
 def _part2():
